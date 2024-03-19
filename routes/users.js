@@ -1,6 +1,6 @@
 const router = require( "express" ).Router();
 //Bring in the User Registration function
-const { userRegister, userLogin , userAuth, serialyzeUser,checkRole } = require( "../utils/Auth" );
+const { userRegister, userLogin , userAuth, serialyzeUser,checkRole } = require( "../controllers/Auth" );
 
 
 //Student regiatration route 
