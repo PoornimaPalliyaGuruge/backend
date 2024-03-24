@@ -1,29 +1,37 @@
-const { Schema, model, default: mongoose } = require('mongoose');
+    const { Schema, model, default: mongoose } = require('mongoose');
 
-const CourseSchema = mongoose.Schema({
+    const CourseSchema = mongoose.Schema({
 
-    courseName : {
-        type : String,
-        require : true
-    },
+        courseName : {
+            type : String,
+            require : true
+        },
+        code : {
+            type : String,
+            unique : true,
+            require : true
+        },
+        description : {
+            type : String,
+            require: true
+        },
 
-    description : {
-        type : String,
-        require: true
-    },
+        credits : {
+            type : Number,
+            min : 1,
+            max : 4,
+            require : true
+        },
 
-    credits : {
-        type : Number,
-        min : 1,
-        max : 4,
-        require : true
-    },
+        facultyId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'users',
+            required: true
+        }
 
-},{
-    timestamps : true //creates createdAt and updatedAt fields in the database
-  }
-);
+    },{
+        timestamps : true 
+    }
+    );
 
-const Course = module.exports = model("Course", CourseSchema);
-
-module.exports = Course;
+    module.exports = mongoose.model("Course", CourseSchema);
